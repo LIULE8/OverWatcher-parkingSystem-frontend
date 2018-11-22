@@ -43,17 +43,17 @@ export default class Transfers extends React.Component {
 
     filterOption = (inputValue, option) => {
         return option.description.indexOf(inputValue) > -1;
-    }
+    };
 
     handleChange = (direction, moveId,userId) => {
-        console.log("store----------------------------")
-        console.log(store)
+        console.log("store----------------------------");
+        console.log(store);
         let dispatch = store.dispatch;
         ParkingBoysApi.changeParkingLotsOwner(dispatch,direction,moveId,userId);
-    }
+    };
     showsome = () => {
         this.props.showsomeC();
-    }
+    };
 
     render() {
         let parkingLotLeftData = this.props.left;

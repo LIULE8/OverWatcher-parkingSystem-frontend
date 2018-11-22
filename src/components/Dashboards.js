@@ -14,7 +14,7 @@ export default class Dashboards extends Component{
         // function handleChange(value) {
         //     console.log(`selected ${value}`);
         // }
-        const store = createStore(rootReducer)
+        const store = createStore(rootReducer);
         DashBoardsApi.init(store.dispatch);
         return(
             <div>

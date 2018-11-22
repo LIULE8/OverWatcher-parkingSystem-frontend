@@ -10,7 +10,7 @@ const Search = Input.Search;
 
 export default class Employees extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             editing: props.Employees.map(emp=>false),
             visible: false,
@@ -86,33 +86,33 @@ export default class Employees extends Component {
         }];
     edit=(record)=>{
         this.setState(preState=>{
-            console.log("=== 点击修改 ===")
+            console.log("=== 点击修改 ===");
             let newState = JSON.parse(JSON.stringify(this.state));
-            console.log(newState)
-            console.log(record)
+            console.log(newState);
+            console.log(record);
 
-            newState.editing[record.key]=true
+            newState.editing[record.key]=true;
 
             return newState
         })
-    }
+    };
 
     finishActivated = () => {
         message.success('激活成功', 1);
-    }
+    };
     finishFrozen = () => {
         message.success('冻结成功', 1);
-    }
+    };
     frozenOrActived = (record) => {
-        console.log("员工表格\n---------------------------")
-        console.log(record)
-        const aliveStatus = !record.alive
+        console.log("员工表格\n---------------------------");
+        console.log(record);
+        const aliveStatus = !record.alive;
         if (record.alive) {
             this.props.frozenOrUnfrozen(record.id, aliveStatus, this.finishFrozen)
         } else {
             this.props.frozenOrUnfrozen(record.id, aliveStatus, this.finishActivated)
         }
-    }
+    };
 
 
 

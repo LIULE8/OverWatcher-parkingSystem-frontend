@@ -17,7 +17,7 @@ const formItemLayout = {
 
 class NormalLoginForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             employee: props.employeeMsg
         }
@@ -26,23 +26,23 @@ class NormalLoginForm extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            console.log("=== 修改后的员工信息 ===")
-            console.log(values)
-            this.props.editConfirm(this.props.employeeMsg.id, values, this.success)
+            console.log("=== 修改后的员工信息 ===");
+            console.log(values);
+            this.props.editConfirm(this.props.employeeMsg.id, values, this.success);
             if (!err) {
                 console.log('姓名：' + values.name + "\n职务：" + values.role + "\n邮箱：" + values.email + "\n电话：" + values.phone + "用户" + values.username);
             }
         });
     };
     success = () => {
-        this.props.close()
+        this.props.close();
         message.success('修改成功', 1);
-    }
+    };
 
     render() {
-console.log("=== 停车小弟的信息 ===")
-        console.log(this.state.parkingBoyMsg)
-        let {name, username, role, email, phone} = this.state.parkingBoyMsg
+        console.log("=== 停车小弟的信息 ===");
+        console.log(this.state.parkingBoyMsg);
+        let {name, username, role, email, phone} = this.state.parkingBoyMsg;
 
 
         const {getFieldDecorator} = this.props.form;

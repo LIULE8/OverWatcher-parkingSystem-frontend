@@ -91,7 +91,7 @@ const employeesApi = {
         }).then(respones => {
             console.log("冻结或激活用户\n-----------------");
             console.log(respones);
-            finish()
+            finish();
             dispatch(changeAliveAction(userId, aliveStatus))
 
         })
@@ -116,8 +116,8 @@ const employeesApi = {
         }).then(respones => {
             console.log("==== 修改用户请求返回的信息 ====");
             console.log(respones);
-            const emp=respones.data
-            finish()
+            const emp=respones.data;
+            finish();
             dispatch(editEmployeeAction(emp))
 
         })

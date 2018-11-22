@@ -81,15 +81,15 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
         case 'FROZEN_OR_ACTIVED': {
             let newState = JSON.parse(JSON.stringify(state));
             newState.employees.forEach(employee=>{
-                    if(employee.id == action.id)
+                    if(employee.id === action.id)
                         employee.alive=action.aliveStatus
                 }
-            )
+            );
             newState.parkingBoys.forEach(boy=>{
-                    if(boy.id == action.id)
+                    if(boy.id === action.id)
                         boy.alive=action.aliveStatus
                 }
-            )
+            );
             return newState
         }
         case 'CHANGE_PARKINGLOT_UNDISTRIBUTED': {
@@ -107,12 +107,12 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
 
         case 'EDIT_EMPLOYEE': {
             let newState = JSON.parse(JSON.stringify(state));
-            console.log("=== 前端渲染前 ===")
-            console.log(action.employee)
+            console.log("=== 前端渲染前 ===");
+            console.log(action.employee);
             const newEmployees=newState.employees.map(e=>{
-                    if(e.id == action.employee.id){
-                        action.employee.role=action.employee.roleList[0]
-                        console.log("=== 前端渲染后 ===")
+                    if(e.id === action.employee.id){
+                        action.employee.role=action.employee.roleList[0];
+                        console.log("=== 前端渲染后 ===");
 
                         return action.employee
 
@@ -121,7 +121,7 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
                     }
 
                 }
-            )
+            );
             newState.employees=newEmployees.map(employee=>{
                 switch (employee.role) {
                     case "employee":employee.role="员工";break;
@@ -129,8 +129,8 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
                     case "admin":employee.role="管理员";break;
                 }
                 return employee
-            })
-            console.log(newState)
+            });
+            console.log(newState);
             return newState
         }
         default:

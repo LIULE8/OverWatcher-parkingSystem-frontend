@@ -10,7 +10,7 @@ const Search = Input.Search;
 
 export default class ParkingBoy extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             selected: "name",
             editing: props.parkingBoys.map(emp=>false)
@@ -64,60 +64,60 @@ export default class ParkingBoy extends Component {
     }];
 
     edit = (record) => {
-        console.log("=== 点击修改停车员信息 ===")
-        console.log(this.props.parkingBoys)
+        console.log("=== 点击修改停车员信息 ===");
+        console.log(this.props.parkingBoys);
         // this.setState ({
         //     editing:[1,1,1,1]
         // });
-        console.log(this.state)
+        console.log(this.state);
         this.setState(preState => {
 
             let newState = JSON.parse(JSON.stringify(this.state));
-            console.log(preState)
-            console.log(record)
+            console.log(preState);
+            console.log(record);
 
-            newState.editing[record.key] = true
+            newState.editing[record.key] = true;
 
             return newState
-        })
+        });
         console.log(this.state)
 
-    }
+    };
 
     finishActivated = () => {
         message.success('激活成功', 1);
-    }
+    };
     finishFrozen = () => {
         message.success('冻结成功', 1);
-    }
+    };
     frozenOrActived = (record) => {
-        console.log("=== 冻结或激活的Parking Boy ===")
-        console.log(record)
-        const aliveStatus = !record.alive
+        console.log("=== 冻结或激活的Parking Boy ===");
+        console.log(record);
+        const aliveStatus = !record.alive;
         if (record.alive) {
             this.props.frozenOrUnfrozen(record.id, aliveStatus, this.finishFrozen)
         } else {
             this.props.frozenOrUnfrozen(record.id, aliveStatus, this.finishActivated)
         }
-    }
+    };
 
 
     generateTransfer = (e) => {
-        console.log("=============================== e =================================")
-        console.log(this.props.parkingLots)
+        console.log("=============================== e =================================");
+        console.log(this.props.parkingLots);
         const parkinglotLeftData = this.props.parkingLots.filter(lot =>
             (lot.status === "开放" && (lot.userId === 0))
-        )
+        );
         const parkinglotRightData = this.props.parkingLots.filter(lot =>
             (lot.status === "开放" && (lot.userId === e.id))
-        )
-        console.log("=============================== after =================================")
+        );
+        console.log("=============================== after =================================");
         console.log(parkinglotLeftData);
         console.log(parkinglotRightData);
         return (
             <p style={{textAlign: "center", margin: 0}}><Transfers left={parkinglotLeftData} right={parkinglotRightData}
                                                                    id={e.id}/></p>)
-    }
+    };
 
     selectedByConditions(value, selected) {
         if (value === "") {
@@ -146,7 +146,7 @@ export default class ParkingBoy extends Component {
         return (
             <div>
                 <Row>
-                    <Col span={4} style={{textAlign: "left"}}></Col>
+                    <Col span={4} style={{textAlign: "left"}}/>
                     {/* <Col span={8}></Col> */}
                     <Col span={16} offset={4} style={{textAlign: "right"}}>
                         <Select defaultValue={this.state.selected} style={{width: 120}} onChange={value => {

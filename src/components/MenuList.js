@@ -12,19 +12,19 @@ export default class MenuList extends Component {
     constructor(props) {
         super(props);
     }
-    reflushEmployee=()=>{
+    refreshEmployee=()=>{
         employeesApi.init(store.dispatch);
     };
-    reflushParkinglot=()=>{
+    refreshParkingLot=()=>{
         parkingLotApi.init(store.dispatch);
     };
-    reflushParkingboy=()=>{
+    refreshParkingBoy=()=>{
         parkingBoyApi.init(store.dispatch);
     };
-    reflushDashBoards=()=>{
+    refreshDashBoards=()=>{
         DashBoardsApi.init(store.dispatch);
     };
-    reflushOrder=()=>{
+    refreshOrder=()=>{
         order.init(store.dispatch);
     };
     render() {
@@ -32,19 +32,19 @@ export default class MenuList extends Component {
         return (
             <Menu defaultSelectedKeys={[window.location.pathname]} >
                 {window.localStorage.roles==="管理员"&&
-                <Menu.Item key="/manager/employees" onClick={()=>this.reflushEmployee()}>
+                <Menu.Item key="/manager/employees" onClick={()=>this.refreshEmployee()}>
                     <Link to="/manager/employees"><Icon type="form"/>员工管理</Link>
                 </Menu.Item>}
-                <Menu.Item key="/manager/parkinglots" onClick={()=>this.reflushParkinglot()}>
+                <Menu.Item key="/manager/parkinglots" onClick={()=>this.refreshParkingLot()}>
                     <Link to="/manager/parkinglots"><Icon type="form"/>停车场管理</Link>
                 </Menu.Item>
-                <Menu.Item key="/manager/parkingboys" onClick={()=>this.reflushParkingboy()}>
+                <Menu.Item key="/manager/parkingboys" onClick={()=>this.refreshParkingBoy()}>
                     <Link to="/manager/parkingboys"><Icon type="form"/>停车员管理</Link>
                 </Menu.Item>
-                <Menu.Item key="/manager/dashboards" onClick={()=>this.reflushDashBoards()}>
+                <Menu.Item key="/manager/dashboards" onClick={()=>this.refreshDashBoards()}>
                     <Link to="/manager/dashboards"><Icon type="form"/>停车场Dashboard</Link>
                 </Menu.Item>
-                <Menu.Item key="/manager/orders" onClick={()=>this.reflushOrder()}>
+                <Menu.Item key="/manager/orders" onClick={()=>this.refreshOrder()}>
                     <Link to="/manager/orders"><Icon type="form"/>订单管理</Link>
                 </Menu.Item>
             </Menu>

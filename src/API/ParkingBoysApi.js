@@ -43,16 +43,16 @@ const parkingBoysApi = {
         axios.get(`${url}/parkingLots/nonOwner`, {
             headers: {"Authorization": window.localStorage.token},
         }).then((response) => {
-            console.log("未分配的停车场\n-------------------")
-            console.log(response)
-            const undistributedParkingLots = response.data
+            console.log("未分配的停车场\n-------------------");
+            console.log(response);
+            const undistributedParkingLots = response.data;
             dispatch(undistributedParkingLotsAction(undistributedParkingLots));
         }).catch(function (error) {
             console.log(error);
         })
     },
     changeParkingLotsOwner(dispatch, direction, moveId, userId) {
-        console.log(direction + "-------" + moveId + "-------" + userId + "-------")
+        console.log(direction + "-------" + moveId + "-------" + userId + "-------");
 
         axios({
             method: 'put',
