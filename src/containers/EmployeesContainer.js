@@ -11,14 +11,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        selectedEmployeeByValue: (value,selected) => {
-            EmployeesApi.findEmployeesByConditions(value,selected,dispatch);
+        selectedEmployeeByValue: (value, selected) => {
+            EmployeesApi.findEmployeesByConditions(value, selected, dispatch);
         },
-        frozenOrUnfrozen:(userId,aliveStatus,finish)=>{
-            EmployeesApi.frozenOrUnfrozen(userId,aliveStatus,finish,dispatch)
+        frozenOrUnfrozen: (userId, aliveStatus, finish) => {
+            EmployeesApi.frozenOrUnfrozen(userId, aliveStatus, finish, dispatch)
         },
-        confirm:(userId,user,finish)=>{
-            EmployeesApi.editEmploy(userId,user,finish,dispatch)
+        confirm: (userId, user, finish) => {
+            EmployeesApi.editEmploy(userId, user, finish, dispatch)
         }
     }
 };

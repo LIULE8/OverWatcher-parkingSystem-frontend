@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Table, Divider, Button, Input, Select, Row, Col, Icon, Modal, Popconfirm, message} from 'antd';
 import WrappedNormalLoginForm from "../containers/NewEmployeeContainer";
 import EditEmployeeBox from "./EmployeeEditBox";
+import {Table, Divider, Button, Input, Select, Row, Col, Icon, Modal, Popconfirm, message} from 'antd';
+import '../css/user.css';
 
 const Option = Select.Option;
 
@@ -12,7 +13,7 @@ export default class Employees extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            editing: props.Employees.map(emp=>false),
+            editing: props.Employees.map(emp => false),
             visible: false,
             selected: "name"
         }
@@ -22,76 +23,76 @@ export default class Employees extends Component {
         title: 'Id',
         dataIndex: 'id',
         key: 'id',
-        render: text => <a>{text}</a>,
+        render: text => <div style={{textAlign: "center"}}>{text}</div>,
     }, {
         title: '姓名',
         dataIndex: 'name',
-        key: 'name',
+        key: 'name'
     }, {
         title: '用户名',
         dataIndex: 'username',
-        key: 'username',
-    }
-        , {
-            title: 'Email',
-            dataIndex: 'email',
-            key: 'email',
-        }, {
-            title: '电话号码',
-            dataIndex: 'phone',
-            key: 'phone',
-        },
-        {
-            title: '职务',
-            dataIndex: 'role',
-            key: 'role',
-        },
-        {
-            title: '操作',
-            dataIndex: 'alive',
-            key: 'alive',
-            render: (text, record) => {
-                if(record.role!=="管理员"){
-                    return(
-                        <span>
-                        <a className="ant-dropdown-link" onClick={()=>{this.edit(record)}}>修改 </a>
-                    <Modal
-                        title="修改员工信息"
-                        visible={this.state.editing[record.key]}
-                        onOk={this.handleOk}
-                        onCancel={this.handleCancel}
-                        footer={null}
-                    >
-                        <EditEmployeeBox employeeMsg={record} close={this.handleCancel} editConfirm={this.props.confirm}/>
-                    </Modal>
+        key: 'username'
+    }, {
+        title: 'Email',
+        dataIndex: 'email',
+        key: 'email'
+    }, {
+        title: '电话号码',
+        dataIndex: 'phone',
+        key: 'phone'
+    }, {
+        title: '职务',
+        dataIndex: 'role',
+        key: 'role'
+    }, {
+        title: '操作',
+        dataIndex: 'alive',
+        key: 'alive',
+        render: (text, record) => {
+            if (record.role !== "管理员") {
+                return (
+                    <span>
+                        <a className="ant-dropdown-link" onClick={() => {
+                            this.edit(record)
+                        }}>修改 </a>
+                        <Modal
+                            title="修改员工信息"
+                            visible={this.state.editing[record.key]}
+                            onOk={this.handleOk}
+                            onCancel={this.handleCancel}
+                            footer={null}
+                        >
+                            <EditEmployeeBox employeeMsg={record} close={this.handleCancel}
+                                             editConfirm={this.props.confirm}/>
+                        </Modal>
                         <Divider type="vertical"/>
-                            {record.alive ? (<Popconfirm
-                                    title="冻结后该用户将无法登录，确定冻结吗？"
-                                    onConfirm={() => {
-                                        this.frozenOrActived(record)
-                                    }}
-                                >
-                                    <a>冻结</a>
-                                </Popconfirm>)
-                                : (
-                                    <a onClick={() => {
-                                        this.frozenOrActived(record)
-                                    }}>激活</a>
-                                )
-                            }
+                        {record.alive ? (<Popconfirm
+                                title="冻结后该用户将无法登录，确定冻结吗？"
+                                onConfirm={() => {
+                                    this.frozenOrActived(record)
+                                }}
+                            >
+                                <a>冻结</a>
+                            </Popconfirm>)
+                            : (
+                                <a onClick={() => {
+                                    this.frozenOrActived(record)
+                                }}>激活</a>
+                            )
+                        }
                     </span>
-                    )
-                }
-                }
-        }];
-    edit=(record)=>{
-        this.setState(preState=>{
+                )
+            }
+        }
+    }];
+    edit = (record) => {
+        this.setState(preState => {
             console.log("=== 点击修改 ===");
             let newState = JSON.parse(JSON.stringify(this.state));
             console.log(newState);
             console.log(record);
 
-            newState.editing[record.key]=true;
+            newState.editing[record.key] = true;
 
             return newState
         })
@@ -113,7 +114,6 @@ export default class Employees extends Component {
             this.props.frozenOrUnfrozen(record.id, aliveStatus, this.finishActivated)
         }
     };
-
 
 
     showModal = () => {
@@ -138,13 +138,14 @@ export default class Employees extends Component {
         console.log("=== 模态框关闭 ===");
         console.log(e);
         this.setState({
-            editing: this.props.Employees.map(emp=>false),
+            editing: this.props.Employees.map(emp => false),
             visible: false
         });
     };
 
     render() {
-        const datas = (this.props.Employees).map((emp, index) => {
+        //准备数据
+        const data = (this.props.Employees).map((emp, index) => {
             const {id, name, username, email, phone, role, alive} = emp;
             return {key: index, id, name, username, email, phone, role, alive}
         });
@@ -180,7 +181,8 @@ export default class Employees extends Component {
                                 enterButton="搜索"/>
                     </Col>
                 </Row>
-                <Table bordered columns={this.columns} dataSource={datas} style={{marginTop: "20px"}}/>
+                <Table bordered columns={this.columns} dataSource={data}
+                       style={{marginTop: "20px"}}/>
             </div>
         );
     }
