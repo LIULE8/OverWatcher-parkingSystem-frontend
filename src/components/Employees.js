@@ -22,8 +22,7 @@ export default class Employees extends Component {
     columns = [{
         title: 'Id',
         dataIndex: 'id',
-        key: 'id',
-        render: text => <div style={{textAlign: "center"}}>{text}</div>,
+        key: 'id'
     }, {
         title: '姓名',
         dataIndex: 'name',
