@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import Parkinglots from "../components/Parkinglots";
-import ParkingLotsApi from "../API/ParkingLotsApi";
+import ParkingLotsApi from "../apis/ParkingLotsApi";
 
 
 const mapStateToProps = (state, ownProps) =>{

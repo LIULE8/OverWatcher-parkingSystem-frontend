@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import Orders from "../components/Orders";
 import Parkingboys from "../components/Parkingboys";
-import orderApi from "../API/orderApi"
+import orderApi from "../apis/orderApi"
 
 const mapStateToProps = (state, ownProps) => {
     return {

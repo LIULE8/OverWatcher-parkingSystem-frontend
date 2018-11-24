@@ -1,5 +1,5 @@
-const initEmployee = (employeesObject) => {
-    return {type: 'INITEMPLOYEE', employeesObject}
+const initEmployee = (usersObject) => {
+    return {type: 'INITEMPLOYEE', usersObject}
 };
 const initParkingLot = (parkingLotsObject) => {
     return {type: 'INITPARKINGLOT', parkingLotsObject}
@@ -16,8 +16,8 @@ const searchOrdersByCondition = (orderObject) => {
     return {type: 'SELECT_ORDERS_BY_CONDITION', orderObject}
 };
 
-const searchEmployeesByCondition = (employeesObject) => {
-    return {type: 'SELECT_EMPLOYEES_BY_CONDITION', employeesObject}
+const searchEmployeesByCondition = (usersObject) => {
+    return {type: 'SELECT_EMPLOYEES_BY_CONDITION', usersObject}
 };
 
 const searchParkingLotsByCondition = (parkingLotsObject) => {

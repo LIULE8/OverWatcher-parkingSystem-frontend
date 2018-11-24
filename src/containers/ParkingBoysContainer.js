@@ -1,7 +1,7 @@
 import {connect} from 'react-redux'
 import ParkingBoys from "../components/Parkingboys";
-import ParkingBoysApi from "../API/ParkingBoysApi"
-import EmployeesApi from "../API/EmployeesApi";
+import ParkingBoysApi from "../apis/ParkingBoysApi"
+import EmployeesApi from "../apis/UsersApi";
 
 const mapStateToProps = (state, ownProps) =>{
     console.log("--------");

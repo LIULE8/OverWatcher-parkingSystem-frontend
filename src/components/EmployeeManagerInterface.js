@@ -8,9 +8,11 @@ import Dashboards from '../containers/DashBoardsContainer'
 import Orders from '../containers/OrdersContainer'
 import {Avatar, Col, Layout, Menu,Button,Icon,message,Popconfirm} from 'antd';
 import axios from "axios";
+import config from "../config/common";
 
 const { Header, Content, Footer, Sider } = Layout;
-let url = `https://over-back.herokuapp.com`;
+
+let url = config.url;
 export default class EmployeeManagerInterface extends Component{
     logout=()=>{
         message.loading('正在登出帐号..', 2)
@@ -73,7 +75,7 @@ export default class EmployeeManagerInterface extends Component{
                                     <MenuList match={this.props.match}/>
                                 </Sider>
                                 <Content style={{padding: '0 24px', minHeight: 280}}>
-                                    <Route path="/manager/employees" component={Employees}/>
+                                    <Route path="/manager/users" component={Employees}/>
                                     <Route path="/manager/parkinglots" component={Parkinglots}/>
                                     <Route path="/manager/parkingboys" component={Parkingboys}/>
                                     <Route path="/manager/dashboards" component={Dashboards}/>

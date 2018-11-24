@@ -1,8 +1,8 @@
-export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],parkingBoys:[],orders:[],boys:[],newEmployees:[],newParkingLots:[],ownParkingLots:[],}, action) => {
+export default  (state={users:[],parkingLots:[],DashBoardsparkingLots:[],parkingBoys:[],orders:[],boys:[],newEmployees:[],newParkingLots:[],ownParkingLots:[],}, action) => {
     switch (action.type) {
         case 'INITEMPLOYEE': {
             let newState = JSON.parse(JSON.stringify(state));
-            newState.employees = [...action.employeesObject];
+            newState.users = [...action.usersObject];
             return newState
         }
         case 'INITPARKINGLOT': {
@@ -32,7 +32,7 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
         }
         case 'SELECT_EMPLOYEES_BY_CONDITION': {
             let newState = JSON.parse(JSON.stringify(state));
-            newState.employees = [...action.employeesObject];
+            newState.users = [...action.usersObject];
             return newState
         }
 
@@ -80,7 +80,7 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
         }
         case 'FROZEN_OR_ACTIVED': {
             let newState = JSON.parse(JSON.stringify(state));
-            newState.employees.forEach(employee=>{
+            newState.users.forEach(employee=>{
                     if(employee.id === action.id)
                         employee.alive=action.aliveStatus
                 }
@@ -109,7 +109,7 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
             let newState = JSON.parse(JSON.stringify(state));
             console.log("=== 前端渲染前 ===");
             console.log(action.employee);
-            const newEmployees=newState.employees.map(e=>{
+            const newEmployees=newState.users.map(e=>{
                     if(e.id === action.employee.id){
                         action.employee.role=action.employee.roleList[0];
                         console.log("=== 前端渲染后 ===");
@@ -122,7 +122,7 @@ export default  (state={employees:[],parkingLots:[],DashBoardsparkingLots:[],par
 
                 }
             );
-            newState.employees=newEmployees.map(employee=>{
+            newState.users=newEmployees.map(employee=>{
                 switch (employee.role) {
                     case "employee":employee.role="员工";break;
                     case "manager":employee.role="经理";break;

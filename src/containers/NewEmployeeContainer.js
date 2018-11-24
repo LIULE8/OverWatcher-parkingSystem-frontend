@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import NewEmployee from "../components/NewEmployee";
-import employeesApi from '../API/EmployeesApi'
+import usersApi from '../apis/UsersApi'
 
 const mapStateToProps = (state, ownProps) =>{
     return {
@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) =>{
 const mapDispatchToProps = (dispatch, ownProps) =>{
     return {
         createEmployee:(values)=>{
-            employeesApi.addNewEmployee(values,dispatch)
+            usersApi.addNewEmployee(values,dispatch)
         }
     };
 };

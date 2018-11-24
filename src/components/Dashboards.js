@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Col, Row,Progress } from 'antd';
 import {createStore} from "redux";
 import rootReducer from "../reducers";
-import DashBoardsApi from "../API/DashBoardsApi";
+import DashBoardsApi from "../apis/DashBoardsApi";
 
 export default class Dashboards extends Component{
     render(){

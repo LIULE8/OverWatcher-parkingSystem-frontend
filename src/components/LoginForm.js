@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import {Button, Card, Col, Icon, Input, message} from 'antd';
 import axios from "axios";
 import "../bubble.css";
-import employeesApi from "../API/EmployeesApi";
-import parkingLotApi from '../API/ParkingLotsApi'
-import DashBoardsApi from '../API/DashBoardsApi'
-import parkingBoyApi from '../API/ParkingBoysApi'
-import order from '../API/orderApi'
+import usersApi from "../apis/UsersApi";
+import parkingLotApi from '../apis/ParkingLotsApi'
+import DashBoardsApi from '../apis/DashBoardsApi'
+import parkingBoyApi from '../apis/ParkingBoysApi'
+import order from '../apis/orderApi'
 import store from '../index'
+import config from "../config/common";
 
-let url = `https://over-back.herokuapp.com`;
-// let url = `http://localhost:9090`;
+let url = config.url;
 export default class LoginForm extends Component {
     constructor(props){
         super(props);
@@ -33,13 +33,13 @@ export default class LoginForm extends Component {
                         window.localStorage.token = response.data.token;
                         window.localStorage.roles = response.data.roles;
                         window.localStorage.username = response.data.username;
-                        employeesApi.init(store.dispatch);
+                        usersApi.init(store.dispatch);
                         parkingLotApi.init(store.dispatch);
                         parkingBoyApi.init(store.dispatch);
                         DashBoardsApi.init(store.dispatch);
                         order.init(store.dispatch);
                         if(window.localStorage.roles==="管理员"){
-                            this.props.history.push('/manager/employees')
+                            this.props.history.push('/manager/users')
                         }else if(window.localStorage.roles==="经理"){
                             this.props.history.push('/manager/parkinglots')
                         }else{

@@ -1,9 +1,10 @@
 import {initParkingLot, searchParkingLotsByCondition, alterParkinglotstatus, addParkingLot} from "../actions";
 import axios from "axios";
 import {message} from "antd/lib/index";
+import config from "../config/common";
 
-let url = `https://over-back.herokuapp.com`;
-// let url = `http://localhost:9090`;
+
+let url = config.url;
 const parkingLotsApi = {
 
     parkingLots: [],

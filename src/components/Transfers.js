@@ -1,7 +1,7 @@
 import React from 'react';
 import {Transfer} from 'antd';
 import store from "../index"
-import ParkingBoysApi from "../API/ParkingBoysApi"
+import ParkingBoysApi from "../apis/ParkingBoysApi"
 
 export default class Transfers extends React.Component {
     constructor(props) {

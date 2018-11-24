@@ -1,9 +1,10 @@
 import {initOrderApi, searchOrdersByCondition,assignParkingboy,scramble} from "../actions";
 import axios from "axios";
+import config from "../config/common";
 
 
-let url = `https://over-back.herokuapp.com`;
-// let url = `http://localhost:9090`;
+
+let url = config.url;
 const ordersApi = {
 
     parkingBoys: [],
@@ -32,7 +33,7 @@ const ordersApi = {
         })
     },
     assigned(id,dispatch) {
-        axios.get(`${url}/employees/onWork`, {
+        axios.get(`${url}/users/onWork`, {
             headers: {"Authorization": window.localStorage.token}
         }).then((response) => {
             dispatch(assignParkingboy(response.data));

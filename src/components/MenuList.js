@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import {Menu, Icon} from 'antd';
 import {Link} from "react-router-dom";
 import store from "../index";
-import employeesApi from "../API/EmployeesApi";
-import parkingLotApi from '../API/ParkingLotsApi'
-import DashBoardsApi from '../API/DashBoardsApi'
-import parkingBoyApi from '../API/ParkingBoysApi'
-import order from '../API/orderApi'
+import usersApi from "../apis/UsersApi";
+import parkingLotApi from '../apis/ParkingLotsApi'
+import DashBoardsApi from '../apis/DashBoardsApi'
+import parkingBoyApi from '../apis/ParkingBoysApi'
+import order from '../apis/orderApi'
 
 export default class MenuList extends Component {
     constructor(props) {
         super(props);
     }
     refreshEmployee=()=>{
-        employeesApi.init(store.dispatch);
+        usersApi.init(store.dispatch);
     };
     refreshParkingLot=()=>{
         parkingLotApi.init(store.dispatch);
@@ -32,8 +32,8 @@ export default class MenuList extends Component {
         return (
             <Menu defaultSelectedKeys={[window.location.pathname]} >
                 {window.localStorage.roles==="管理员"&&
-                <Menu.Item key="/manager/employees" onClick={()=>this.refreshEmployee()}>
-                    <Link to="/manager/employees"><Icon type="form"/>员工管理</Link>
+                <Menu.Item key="/manager/users" onClick={()=>this.refreshEmployee()}>
+                    <Link to="/manager/users"><Icon type="form"/>员工管理</Link>
                 </Menu.Item>}
                 <Menu.Item key="/manager/parkinglots" onClick={()=>this.refreshParkingLot()}>
                     <Link to="/manager/parkinglots"><Icon type="form"/>停车场管理</Link>

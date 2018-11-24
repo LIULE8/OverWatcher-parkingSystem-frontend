@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table, Divider,Button,Input, Select,Row, Col,Icon,Modal} from 'antd';
 import {createStore} from "redux";
 import rootReducer from "../reducers";
-import ParkingLotsApi from "../API/ParkingLotsApi";
+import ParkingLotsApi from "../apis/ParkingLotsApi";
 import WrappedParkingLotForm from '../containers/NewParkingLotContainer'
 import {message} from "antd/lib/index";
 

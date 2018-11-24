@@ -5,9 +5,9 @@ import {
     changeParkingLotOwner
 } from "../actions";
 import axios from "axios";
+import config from "../config/common";
 
-let url = `https://over-back.herokuapp.com`;
-// let url = `http://localhost:9090`;
+let url = config.url;
 const parkingBoysApi = {
 
     parkingBoys: [],
@@ -56,7 +56,7 @@ const parkingBoysApi = {
 
         axios({
             method: 'put',
-            url:  `${url}/employees/changeParkingLotOwner`,
+            url:  `${url}/users/changeParkingLotOwner`,
             data: {
                 direction: direction,
                 parkingLotId: moveId,

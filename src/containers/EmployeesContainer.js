@@ -1,11 +1,11 @@
 import {connect} from 'react-redux'
 import Employees from "../components/Employees";
-import EmployeesApi from "../API/EmployeesApi"
+import EmployeesApi from "../apis/UsersApi"
 
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        Employees: state.employees
+        Employees: state.users
     }
 };
 
